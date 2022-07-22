@@ -29,11 +29,15 @@
 
     @if (Auth::user()->role == 'admin')
         <!-- Nav Item - Pages Collapse Menu -->
-
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
                 <i class="fas fa-calculator fa-chart-area"></i>
                 <span>Perhitungan</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-trophy fa-chart-area"></i>
+                <span>Prestasi Pegawai</span></a>
         </li>
     @elseif (Auth::user()->role == 'owner')
         <li class="nav-item">
@@ -46,6 +50,12 @@
             <a class="nav-link" href="{{ url('/jabatan') }}">
                 <i class="fas fa-handshake fa-chart-area"></i>
                 <span>Jabatan</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/cabang') }}">
+                <i class="fas fa-store fa-chart-area"></i>
+                <span>Cabang</span></a>
         </li>
 
         <li class="nav-item">

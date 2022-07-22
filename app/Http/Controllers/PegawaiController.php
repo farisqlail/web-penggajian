@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cabang;
 use App\Models\Golongan;
 use App\Models\Jabatan;
 use App\Models\Pegawai;
@@ -19,15 +20,17 @@ class PegawaiController extends Controller
     public function index()
     {
         $pegawai = Pegawai::join('jabatans as jb', 'jb.id', '=', 'pegawais.id_jabatan')
-            ->join('golongans as gl', 'gl.id', '=', 'pegawais.id_golongan')
+            ->join('cabangs as cb', 'cb.id', '=', 'pegawais.id_cabang')
             ->get();
         $jabatan = Jabatan::all();
         $golongan = Golongan::all();
+        $cabang = Cabang::all();
 
         return view('owner.pegawai.index', [
             'pegawai' => $pegawai,
             'jabatan' => $jabatan,
-            'golongan' => $golongan
+            'golongan' => $golongan,
+            'cabang' => $cabang
         ]);
     }
 
@@ -40,9 +43,12 @@ class PegawaiController extends Controller
     {
         $jabatan = Jabatan::all();
         $golongan = Golongan::all();
+        $cabang = Cabang::all();
+
         return view('owner.pegawai.create', [
             'jabatan' => $jabatan,
-            'golongan' => $golongan
+            'golongan' => $golongan,
+            'cabang' => $cabang
         ]);
     }
 
@@ -70,9 +76,12 @@ class PegawaiController extends Controller
             $pegawai = new Pegawai();
 
             $pegawai->nama_pegawai = $request->get('nama_pegawai'); 
+            $pegawai->jenis_kelamin = $request->get('jenis_kelamin');
+            $pegawai->alamat = $request->get('alamat');
             $pegawai->id_jabatan = $request->get('id_jabatan');
-            $pegawai->id_golongan = $request->get('id_golongan');
+            $pegawai->id_cabang = $request->get('id_cabang');
             $pegawai->status = $request->get('status');
+            $pegawai->tahun_masuk = $request->get('tahun_masuk');
             $pegawai->jumlah_anak = $request->get('jumlah_anak');
 
             $pegawai->save();
@@ -104,11 +113,13 @@ class PegawaiController extends Controller
         $pegawai = Pegawai::findOrFail($id);
         $jabatan = Jabatan::all();
         $golongan = Golongan::all();
+        $cabang = Cabang::all();
 
         return view('owner.pegawai.edit', [
             'pegawai' => $pegawai,
             'jabatan' => $jabatan,
-            'golongan' => $golongan
+            'golongan' => $golongan,
+            'cabang' => $cabang
         ]);
     }
 
@@ -137,9 +148,12 @@ class PegawaiController extends Controller
             $pegawai = Pegawai::findOrFail($id);
 
             $pegawai->nama_pegawai = $request->get('nama_pegawai'); 
+            $pegawai->jenis_kelamin = $request->get('jenis_kelamin');
+            $pegawai->alamat = $request->get('alamat');
             $pegawai->id_jabatan = $request->get('id_jabatan');
-            $pegawai->id_golongan = $request->get('id_golongan');
+            $pegawai->id_cabang = $request->get('id_cabang');
             $pegawai->status = $request->get('status');
+            $pegawai->tahun_masuk = $request->get('tahun_masuk');
             $pegawai->jumlah_anak = $request->get('jumlah_anak');
 
             $pegawai->save();

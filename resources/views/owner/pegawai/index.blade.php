@@ -26,7 +26,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Jabatan</th>
-                            <th>Golongan</th>
+                            <th>Cabang</th>
                             <th>Status</th>
                             <th>Jumlah Anak</th>
                             <th>Actions</th>
@@ -38,7 +38,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_pegawai }}</td>
                                 <td>{{ $item->nama_jabatan }}</td>
-                                <td>{{ $item->tunjangan_menikah }}</td>
+                                <td>{{ $item->nama_cabang }}</td>
                                 <td>{{ $item->status }}</td>
                                 <td>{{ $item->jumlah_anak }}</td>
                                 <td>
@@ -61,9 +61,6 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         $(document).ready(function() {

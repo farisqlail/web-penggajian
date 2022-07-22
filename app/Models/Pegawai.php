@@ -10,10 +10,13 @@ class Pegawai extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_pegawai',
         'id_jabatan',
-        'id_golongan',
+        'id_cabang',
+        'nama_pegawai',
+        'jenis_kelamin',
+        'alamat',
         'status',
+        'tahun_masuk',
         'jumlah_anak'
     ];
 
@@ -22,8 +25,8 @@ class Pegawai extends Model
         return $this->belongsTo(Jabatan::class);
     }
 
-    public function golongan(){
+    public function cabang(){
 
-        return $this->belongsTo(Golongan::class);
+        return $this->belongsTo(Cabang::class);
     }
 }
