@@ -36,6 +36,7 @@ Route::group(
     ],
     function () {
         // Route::get('/pilih-cabang', [DashboardController::class, 'pilihCabang']);
+        Route::post('/year-filter', [DashboardController::class, 'chartByYear']);
 
         //Route Golongan
         Route::resource('/golongan', GolonganController::class);
@@ -63,6 +64,7 @@ Route::group(
         Route::get('/data-transaksi', [PerhitunganController::class, 'dataTransaksi']);
         Route::get('/hitung-omzet', [PerhitunganController::class, 'hitungOmzet']);
         Route::get('/transaksi/delete/{id}', [PerhitunganController::class, 'destroy']);
+        Route::get('/filter-cabang-transaksi/{id}', [PerhitunganController::class, 'filterCabangTransaksi']);
     }
 );
 
